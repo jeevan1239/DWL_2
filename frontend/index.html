@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DWL - Deep Website Learner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <h1>DWL — Deep Website Learner</h1>
+        <p>Paste a website URL, generate a quick summary, then chat with the site.</p>
+      </header>
+
+      <section class="card">
+        <form id="summarize-form">
+          <label for="site-url">Website URL</label>
+          <div class="input-row">
+            <input id="site-url" type="url" placeholder="https://example.com" required />
+            <button type="submit">Analyze</button>
+          </div>
+        </form>
+        <div id="status" class="status"></div>
+      </section>
+
+      <section class="card" id="summary-card">
+        <h2>Summary</h2>
+        <p class="muted">We will scan a small set of pages first. For larger sites, we adapt with focused reads.</p>
+        <div id="summary" class="summary"></div>
+      </section>
+
+      <section class="card" id="chat-card">
+        <h2>Ask questions</h2>
+        <div id="chat-log" class="chat-log"></div>
+        <form id="chat-form">
+          <div class="input-row">
+            <input id="chat-input" type="text" placeholder="Ask about admissions, services, policies..." required />
+            <button type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
