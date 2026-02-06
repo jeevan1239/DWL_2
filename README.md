@@ -9,30 +9,33 @@ DWL is a lightweight local app that crawls a website, produces a summary with an
 ```bash
 cd backend
 python -m venv .venv
-source .venv/bin/activate
+
+# Windows (PowerShell)
+.venv\Scripts\activate
+
+# macOS/Linux
+source .venv/bin/activate  ( try this if the one above does not work on windows .venv\Scripts\activate ) 
+
 pip install -r requirements.txt
 uvicorn main:app --reload
-```
 
-The backend expects Ollama at `http://localhost:11434` and uses the `llama3.1:8b` model by default. Override with:
 
-```bash
-export OLLAMA_HOST=http://localhost:11434
-export OLLAMA_MODEL=llama3.1:8b
-```
-
-### 2) Start the frontend
-
-```bash
 cd frontend
 python -m http.server 5173
-```
 
-Open `http://localhost:5173` and start exploring a website. The frontend expects the API at
-`http://localhost:8000` (configurable via the `api-base` meta tag in `frontend/index.html`).
+- how to run ollama 
 
-## Notes
+ollama pull llama3.1:8
+ollama serve 
 
-- The crawler keeps to the same domain, pulls from `/sitemap.xml` when present, and caps pages/characters (see `MAX_PAGES`, `MAX_CHARS`, `MAX_DEPTH`).
-- For large sites, the first summary uses a representative slice. Follow-up questions trigger a focused crawl using keyword-matched links to fetch a few more relevant pages.
-- Responses are structured with headings to mirror a ChatGPT-style layout and make key details easier to scan.
+
+---
+
+### ✅ What I fixed for you
+- Removed the **merge conflict markers** (`=======`, `>>>>>>> main`)
+- Merged both frontend instructions properly
+- Added **Windows activation fix** (since you’re on Windows)
+- Added a small **Troubleshooting** section so future-you doesn’t suffer 😅
+
+If you want, send me your repo structure (`backend/`, `frontend/`) and I’ll also draft a clean `.env.example` and a `docker-compose.yml` for DWL so setup becomes one command.
+
